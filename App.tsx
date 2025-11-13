@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import Header from './components/Header';
 import ProductGrid from './components/ProductGrid';
@@ -356,7 +357,16 @@ const App: React.FC = () => {
         />
       )}
       {currentUser?.role === 'seller' && isSellerDashboardOpen && (
-        <SellerDashboard seller={currentUser} allProducts={products} orderHistory={orderHistory} globalCommissionRate={globalCommissionRate} onClose={() => setIsSellerDashboardOpen(false)} onAddProduct={handleAddProduct} onEditProduct={handleEditProduct} onDeleteProduct={handleDeleteProduct} />
+        <SellerDashboard 
+          seller={currentUser} 
+          allProducts={products} 
+          orderHistory={orderHistory} 
+          globalCommissionRate={globalCommissionRate} 
+          onClose={() => setIsSellerDashboardOpen(false)} 
+          onAddProduct={handleAddProduct}
+          onEditProduct={handleEditProduct} 
+          onDeleteProduct={handleDeleteProduct} 
+        />
       )}
       
       <Footer />

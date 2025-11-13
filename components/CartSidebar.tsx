@@ -12,6 +12,27 @@ interface CartSidebarProps {
   onCheckout: () => void;
 }
 
+const CartItemImage: React.FC<{ item: CartItem }> = ({ item }) => {
+  const [imageSrc, setImageSrc] = useState(item.imageUrl);
+  useEffect(() => {
+    setImageSrc(item.imageUrl);
+  }, [item.imageUrl]);
+
+  const handleImageError = () => {
+    const placeholderUrl = `https://via.placeholder.com/96x96.png?text=${encodeURIComponent(item.name)}`;
+    setImageSrc(placeholderUrl);
+  };
+
+  return (
+    <img 
+      src={imageSrc} 
+      onError={handleImageError} 
+      alt={item.name} 
+      className="h-full w-full object-cover object-center" 
+    />
+  );
+};
+
 const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onCheckout }) => {
   const [isFlashing, setIsFlashing] = useState(false);
   const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -51,7 +72,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cartItems, o
                       cartItems.map((item) => (
                         <li key={item.cartItemId} className="py-6 flex">
                           <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                            <img src={item.imageUrl} alt={item.name} className="h-full w-full object-cover object-center" />
+                            <CartItemImage item={item} />
                           </div>
                           <div className="ml-4 flex-1 flex flex-col">
                             <div>

@@ -44,7 +44,7 @@ const ProductFormModal: React.FC<ProductFormModalProps> = ({ productToEdit, onCl
     const { name, value, type } = e.target;
     if (type === 'checkbox') {
       const { checked } = e.target as HTMLInputElement;
-       setFormData(prev => ({ ...prev, [name]: checked }));
+       setFormData(prev => ({...prev, [name]: checked }));
     } else {
        setFormData(prev => ({ ...prev, [name]: value }));
     }
@@ -94,6 +94,16 @@ const ProductFormModal: React.FC<ProductFormModalProps> = ({ productToEdit, onCl
     </div>
   )
 };
+
+const ProductImage: React.FC<{product: Product}> = ({ product }) => {
+    const [imageSrc, setImageSrc] = useState(product.imageUrl);
+    useEffect(() => { setImageSrc(product.imageUrl) }, [product.imageUrl]);
+    const handleImageError = () => {
+        const placeholderUrl = `https://via.placeholder.com/64x64.png?text=${encodeURIComponent(product.name.substring(0, 3))}`;
+        setImageSrc(placeholderUrl);
+    };
+    return <img className="w-16 h-16 object-cover rounded-md" src={imageSrc} onError={handleImageError} alt={product.name} />
+}
 
 interface SellerDashboardProps {
   seller: User;
@@ -242,7 +252,7 @@ const SellerDashboard: React.FC<SellerDashboardProps> = ({ seller, allProducts, 
                 {sellerProducts.length > 0 ? sellerProducts.map(product => (
                   <div key={product.id} className="bg-white p-3 rounded-md shadow-sm flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <img src={product.imageUrl} alt={product.name} className="w-16 h-16 object-cover rounded-md" />
+                      <ProductImage product={product} />
                       <div>
                         <p className="font-semibold">{product.name}</p>
                         <p className="text-sm text-slate-500">${product.price.toFixed(2)}</p>

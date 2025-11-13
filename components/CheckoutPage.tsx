@@ -14,6 +14,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, user, onBackToSt
 
   useEffect(() => {
     // If user updates address on this page, save it back to their profile
+    // This check prevents an infinite loop on component mount
     if (user.shippingAddress !== shippingAddress) {
       onUpdateUser({ ...user, shippingAddress });
     }
@@ -35,11 +36,11 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, user, onBackToSt
           &larr; Back to Store
         </button>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left Side: Shipping Information */}
-        <div>
-          <h2 className="text-xl font-semibold text-slate-800">Shipping Information</h2>
-          <div className="mt-4 bg-white p-6 rounded-lg shadow-sm">
+        <div className="bg-white p-8 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Shipping Information</h2>
+          <div>
             <label htmlFor="shippingAddress" className="block text-sm font-medium text-gray-700">Shipping Address</label>
             <textarea
               id="shippingAddress"
@@ -56,7 +57,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, user, onBackToSt
         </div>
 
         {/* Right Side: Order Summary */}
-        <div className="bg-white p-8 rounded-lg shadow-sm h-fit sticky top-24">
+        <div className="bg-white p-8 rounded-lg shadow-sm h-fit lg:sticky lg:top-24">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Order Summary</h2>
           <div className="space-y-4">
             {cartItems.map(item => (

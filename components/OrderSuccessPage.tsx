@@ -1,5 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CartItem } from '../types';
+
+interface PurchasedItemImageProps {
+  item: CartItem;
+}
+
+const PurchasedItemImage: React.FC<PurchasedItemImageProps> = ({ item }) => {
+  const [imageSrc, setImageSrc] = useState(item.imageUrl);
+  useEffect(() => {
+    setImageSrc(item.imageUrl);
+  }, [item.imageUrl]);
+
+  const handleImageError = () => {
+    const placeholderUrl = `https://via.placeholder.com/48x48.png?text=${encodeURIComponent(item.name)}`;
+    setImageSrc(placeholderUrl);
+  };
+
+  return (
+    <img 
+      src={imageSrc} 
+      onError={handleImageError} 
+      alt={item.name} 
+      className="w-12 h-12 rounded-md object-cover mr-4"
+    />
+  );
+};
 
 interface OrderSuccessPageProps {
   purchasedItems: CartItem[];
@@ -20,7 +45,7 @@ const OrderSuccessPage: React.FC<OrderSuccessPageProps> = ({ purchasedItems, onC
             {purchasedItems.map(item => (
               <li key={item.id} className="flex justify-between items-center p-3 bg-slate-50 rounded-md">
                 <div className="flex items-center">
-                  <img src={item.imageUrl} alt={item.name} className="w-12 h-12 rounded-md object-cover mr-4" />
+                  <PurchasedItemImage item={item} />
                   <span>{item.name}</span>
                 </div>
                 <a 

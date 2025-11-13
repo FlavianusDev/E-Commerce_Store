@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { Product, User, Order, PayoutDetails } from '../types';
 import { XMarkIcon, PlusIcon, BanknotesIcon, CogIcon, ChartBarIcon, HomeIcon, UsersIcon } from '../constants';
@@ -121,6 +122,15 @@ const ProductFormModal: React.FC<ProductFormModalProps> = ({ productToEdit, onCl
   )
 };
 
+const ProductImage: React.FC<{product: Product}> = ({ product }) => {
+    const [imageSrc, setImageSrc] = useState(product.imageUrl);
+    useEffect(() => { setImageSrc(product.imageUrl) }, [product.imageUrl]);
+    const handleImageError = () => {
+        const placeholderUrl = `https://via.placeholder.com/40x40.png?text=${encodeURIComponent(product.name.substring(0, 3))}`;
+        setImageSrc(placeholderUrl);
+    };
+    return <img className="h-10 w-10 rounded-md object-cover" src={imageSrc} onError={handleImageError} alt={product.name} />
+}
 
 const CommissionsManager: React.FC<{
   sellers: User[];
@@ -624,7 +634,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ adminUser, products, us
                             <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="flex items-center">
                                 <div className="flex-shrink-0 h-10 w-10">
-                                    <img className="h-10 w-10 rounded-md object-cover" src={product.imageUrl} alt={product.name} />
+                                    <ProductImage product={product} />
                                 </div>
                                 <div className="ml-4">
                                     <div className="text-sm font-medium text-slate-900">{product.name}</div>

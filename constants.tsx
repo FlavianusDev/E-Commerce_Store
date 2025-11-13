@@ -51,7 +51,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 1,
     name: 'UI Component Library Snippet',
     price: 49.99,
-    description: 'A collection of ready-to-use UI components for your next web project. Well-documented and easy to integrate.',
+    description: 'A collection of ready-to-use UI components for your next web project. Well-documented and easy to integrate with any modern framework like React, Vue, or Svelte. Includes over 50 components with dark mode support.',
     category: 'Code Snippet',
     imageUrl: 'https://picsum.photos/seed/code1/600/600',
     reviews: [
@@ -67,9 +67,9 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 2,
     name: 'Authentication Backend Service',
     price: 89.99,
-    description: 'A complete, secure backend service for handling user authentication. Includes JWT support and password hashing.',
+    description: 'A complete, secure backend service for handling user authentication. Includes JWT support, password hashing, and social login providers. Easy to deploy with Docker.',
     category: 'Backend',
-    imageUrl: 'https://picsum.photos/seed/code2/600/600',
+    imageUrl: 'https://picsum.photos/seed/brokenurl/600/600',
     reviews: [
       { id: 201, author: 'John D.', rating: 5, comment: 'Works perfectly out of the box. The documentation is clear.', date: '2023-11-01' },
     ],
@@ -82,7 +82,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 3,
     name: 'E-commerce State Management Logic',
     price: 75.50,
-    description: 'Robust state management solution for an e-commerce cart and checkout flow. Built with modern state management libraries.',
+    description: 'Robust state management solution for an e-commerce cart and checkout flow. Built with modern state management libraries, it handles complex scenarios like variations and inventory.',
     category: 'Code Snippet',
     imageUrl: 'https://picsum.photos/seed/code3/600/600',
     reviews: [
@@ -98,7 +98,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 4,
     name: 'Minimalist Portfolio Template',
     price: 25.00,
-    description: 'A stylish and responsive portfolio website template. Perfect for developers and designers to showcase their work.',
+    description: 'A stylish and responsive portfolio website template. Perfect for developers and designers to showcase their work. Built with clean HTML, CSS, and minimal JavaScript.',
     category: 'Template',
     imageUrl: 'https://picsum.photos/seed/code4/600/600',
     reviews: [],
@@ -121,7 +121,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 5,
     name: 'Data Visualization Chart Pack',
     price: 65.00,
-    description: 'A pack of pre-built, interactive charts for data visualization dashboards. Easy to integrate with your data sources.',
+    description: 'A pack of pre-built, interactive charts for data visualization dashboards. Easy to integrate with your data sources. Supports various chart types like bar, line, and pie.',
     category: 'Code Snippet',
     imageUrl: 'https://picsum.photos/seed/code5/600/600',
     reviews: [
@@ -136,7 +136,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 6,
     name: 'Full-Stack Blog Engine',
     price: 150.00,
-    description: 'A complete full-stack blog engine, including a database schema, REST API, and a frontend template.',
+    description: 'A complete full-stack blog engine, including a database schema, REST API, and a frontend template. Comes with features like markdown support and comments.',
     category: 'Full Project',
     imageUrl: 'https://picsum.photos/seed/code6/600/600',
     reviews: [
@@ -151,7 +151,7 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 7,
     name: 'Admin-Only Special Item',
     price: 999.99,
-    description: 'This is a special item that can only be managed by the site administrator.',
+    description: 'This is a special item that can only be managed by the site administrator. It provides access to advanced analytics and store management features.',
     category: 'Admin',
     imageUrl: 'https://picsum.photos/seed/admin/600/600',
     reviews: [],
@@ -172,12 +172,6 @@ export const ShoppingBagIcon: React.FC<{className?: string}> = ({ className }) =
 export const XMarkIcon: React.FC<{className?: string}> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-);
-
-export const SparklesIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 13.5l-.259 1.035a3.375 3.375 0 00-2.456 2.456L14.25 18l1.035.259a3.375 3.375 0 002.456 2.456L18 21.75l.259-1.035a3.375 3.375 0 002.456-2.456L21.75 18l-1.035-.259a3.375 3.375 0 00-2.456-2.456z" />
     </svg>
 );
 
